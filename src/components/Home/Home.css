@@ -1,0 +1,37 @@
+
+p {
+    color:#949cb0;
+    border-bottom: 1px solid #a8a8a83d;
+  }
+
+  h2 {
+    position: relative;
+    padding-top: 20PX;
+  }
+  h2:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 1px;
+    background-color: #a8a8a83d;
+  }
+  .movie {
+    position: relative;
+  }
+  .movie span {
+    /* content: var(--rate);
+    content: ''; */
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #24baef;
+    
+}
