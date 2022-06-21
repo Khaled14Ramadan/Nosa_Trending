@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Nosa_Trending/static/css/main.36394039.css",
-    "main.js": "/Nosa_Trending/static/js/main.0efff047.js",
-    "static/media/fa-solid-900.ttf": "/Nosa_Trending/static/media/fa-solid-900.e615bbcb258550973c16.ttf",
-    "static/media/fa-brands-400.ttf": "/Nosa_Trending/static/media/fa-brands-400.b823fc0dbb5a5f0c21bb.ttf",
-    "static/media/fa-solid-900.woff2": "/Nosa_Trending/static/media/fa-solid-900.59edf72a325ac2048d60.woff2",
-    "static/media/fa-brands-400.woff2": "/Nosa_Trending/static/media/fa-brands-400.ebb7a127d2d8ee6f1832.woff2",
-    "static/media/fa-regular-400.ttf": "/Nosa_Trending/static/media/fa-regular-400.0d03b1bbd1d62c1e1284.ttf",
-    "static/media/fa-regular-400.woff2": "/Nosa_Trending/static/media/fa-regular-400.0caf4c6cf244a90efcc5.woff2",
-    "static/media/fa-v4compatibility.ttf": "/Nosa_Trending/static/media/fa-v4compatibility.4baccb548138840fa33a.ttf",
-    "static/media/fa-v4compatibility.woff2": "/Nosa_Trending/static/media/fa-v4compatibility.afac89562a5301459069.woff2",
-    "index.html": "/Nosa_Trending/index.html",
-    "main.36394039.css.map": "/Nosa_Trending/static/css/main.36394039.css.map",
-    "main.0efff047.js.map": "/Nosa_Trending/static/js/main.0efff047.js.map"
+    "main.css": "/login/static/css/main.d33b8af7.css",
+    "main.js": "/login/static/js/main.0efff047.js",
+    "static/media/fa-solid-900.ttf": "/login/static/media/fa-solid-900.e615bbcb258550973c16.ttf",
+    "static/media/fa-brands-400.ttf": "/login/static/media/fa-brands-400.b823fc0dbb5a5f0c21bb.ttf",
+    "static/media/fa-solid-900.woff2": "/login/static/media/fa-solid-900.59edf72a325ac2048d60.woff2",
+    "static/media/fa-brands-400.woff2": "/login/static/media/fa-brands-400.ebb7a127d2d8ee6f1832.woff2",
+    "static/media/fa-regular-400.ttf": "/login/static/media/fa-regular-400.0d03b1bbd1d62c1e1284.ttf",
+    "static/media/fa-regular-400.woff2": "/login/static/media/fa-regular-400.0caf4c6cf244a90efcc5.woff2",
+    "static/media/fa-v4compatibility.ttf": "/login/static/media/fa-v4compatibility.4baccb548138840fa33a.ttf",
+    "static/media/fa-v4compatibility.woff2": "/login/static/media/fa-v4compatibility.afac89562a5301459069.woff2",
+    "index.html": "/login/index.html",
+    "main.d33b8af7.css.map": "/login/static/css/main.d33b8af7.css.map",
+    "main.0efff047.js.map": "/login/static/js/main.0efff047.js.map"
   },
   "entrypoints": [
-    "static/css/main.36394039.css",
+    "static/css/main.d33b8af7.css",
     "static/js/main.0efff047.js"
   ]
 }
