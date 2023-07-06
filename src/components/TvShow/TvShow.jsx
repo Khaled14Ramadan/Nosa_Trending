@@ -3,7 +3,7 @@ import React from 'react'
 import { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function TvShow() {
+export default function TvShow(props) {
     const [tv, setTv] = useState([]);
 
     useEffect(() => {
@@ -27,15 +27,20 @@ export default function TvShow() {
             </div>
         </div>
         {tv? tv.map((movie , index)=> {
-            return <div key={index} className="col-md-2 col-sm-3 col-4">
-            <div className="movie">
-                <Link to ={`/tvdetails/${movie.id}`}>
-                    <img className='w-100' src={"https://image.tmdb.org/t/p/w500"+ movie.poster_path} alt="" />
-                    <h6 className='pt-1 text-center'>{movie.name}</h6>
-                    <span>{movie.vote_average}</span>
-                </Link>
-            </div>
-        </div>
+            if(props.searchName ==null || movie.name.toUpperCase().includes(props.searchName.toUpperCase()) ){
+                return <div key={index} className="col-md-2 col-sm-3 col-4">
+                            <div className="movie">
+                                <Link to ={`/tvdetails/${movie.id}`}>
+                                    <img className='w-100' src={"https://image.tmdb.org/t/p/w500"+ movie.poster_path} alt="" />
+                                    <h6 className='pt-1 text-center'>{movie.name}</h6>
+                                    <span>{movie.vote_average.toFixed(1)}</span>
+                                </Link>
+                            </div>
+                        </div>
+            }
+            else{
+                return '';
+            }
         }) :<div className="col-md-8 col-sm-6 d-flex justify-content-center align-items-center"> <h2><i className='fas fa-spinner fa-spin'></i></h2> </div>}
     </div>
     </>

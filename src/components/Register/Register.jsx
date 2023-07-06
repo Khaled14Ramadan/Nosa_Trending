@@ -29,6 +29,17 @@ export default function Register() {
         myUser[e.target.name] = e.target.value;
         setUser(myUser);
     }
+
+    let validationinput=()=>
+    {
+        let validationResult = validationRegister(user);
+        //console.log(validationResult.error.details);
+        if(validationResult.error)
+        {
+            setErrorListResgister(validationResult.error.details);
+        }
+    }
+
     // submit function
     let submitRegister = async(e)=>{
         e.preventDefault();
@@ -77,17 +88,18 @@ export default function Register() {
 
   return (
     <>
-     <h2 className='text-center my-4'>Register Now</h2>
+    
+     <h2 className='text-center my-4'>Register</h2>
     {error?<div className='alert alert-danger'>{error}</div>:''}
-   
-     <form className='m-auto vh-100' onSubmit={submitRegister}>
+    {load?<div className='overlay2'></div>:''}
+     <form className='m-auto vh-200' onSubmit={submitRegister}>
         
         <label htmlFor="first_name" className='mt-4 mb-2'> FristName:</label>
-        <input onChange={getUser} type="text" className='form-control  my-1' name='first_name' id='first_name' />
+        <input onChange={getUser} onKeyUp={validationinput} type="text" className='form-control  my-1' name='first_name' id='first_name' />
         {errorListResgister.map((error , index)=>{
             if(error.message.includes("first_name"))
             {
-                return (<div key={index} className='alert-danger p-2 my-2 rounded-2'>{error.message}</div>);
+                return (<div key={index} className='alert-danger p-2 my-2 rounded-2'>Write onley letter and numbers <br/> Min 4 characters</div>);
             }
             else
             {
@@ -95,12 +107,12 @@ export default function Register() {
             }
         })}
 
-        <label htmlFor="last_name" className='mt-2 mb-1'> lastName:</label>
-        <input onChange={getUser} type="text" className='form-control  my-1' name='last_name' id='last_name' />
+        <label htmlFor="last_name" className='mt-2 mb-1'> LastName:</label>
+        <input onChange={getUser} onKeyUp={validationinput} type="text" className='form-control  my-1' name='last_name' id='last_name' />
         {errorListResgister.map((error , index)=>{
             if(error.message.includes("last_name"))
             {
-                return (<div key={index} className='alert-danger p-2 my-2 rounded-2'>{error.message}</div>);
+                return (<div key={index} className='alert-danger p-2 my-2 rounded-2'>Write onley letter and numbers <br/> Min 4 characters</div>);
             }
             else
             {
@@ -108,8 +120,8 @@ export default function Register() {
             }
         })}
 
-        <label htmlFor="age" className='mt-2 mb-1'> age:</label>
-        <input onChange={getUser} type="number" className='form-control  my-1' name='age' id='age' />
+        <label htmlFor="age" className='mt-2 mb-1'> Age:</label>
+        <input onChange={getUser} onKeyUp={validationinput} type="number" className='form-control  my-1' name='age' id='age' />
         {errorListResgister.map((error , index)=>{
             if(error.message.includes("age"))
             {
@@ -121,8 +133,8 @@ export default function Register() {
             }
         })}
 
-        <label htmlFor="email" className='mt-2 mb-1'> your_email:</label>
-        <input onChange={getUser} type="email" className='form-control  my-1' name='email' id='email' />
+        <label htmlFor="email" className='mt-2 mb-1'> Email:</label>
+        <input onChange={getUser} onKeyUp={validationinput} type="email" className='form-control  my-1' name='email' id='email' />
         {errorListResgister.map((error , index)=>{
             if(error.message.includes("email"))
             {
@@ -133,17 +145,17 @@ export default function Register() {
                 return ''
             }
         })}
-        <label htmlFor="password" className='mt-2 mb-1'> password:</label>
-        <input onChange={getUser} type="password" className='form-control  my-1' name='password' id='password' />
+        <label htmlFor="password" className='mt-2 mb-1'> Password:</label>
+        <input onChange={getUser} onKeyUp={validationinput} type="password" className='form-control  my-1' name='password' id='password' />
         {errorListResgister.map((error , index)=>{
             if(error.message.includes("password"))
             {
                 return (<div key={index} className='alert-danger p-2 my-2 rounded-2'>
-                * 1 uppercase letter.
-                <br/>* 1 lowercase letter.
-                <br/>* 1 special character.
-                <br/>* 1 number.
-                <br/>* min 5 characters.</div>);
+                * Min 1 uppercase letter.
+                <br/>*Min 1 lowercase letter.
+                <br/>*Min 1 special character.
+                <br/>*Min 1 number.
+                <br/>* Min 5 characters.</div>);
             }
             else
             {
@@ -155,6 +167,7 @@ export default function Register() {
             {load?<i className='fas fa-spinner fa-spin'></i>: 'Register'}
         </button>
     </form> 
+    
     </>
   )
 }

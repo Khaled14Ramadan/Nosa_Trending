@@ -53,15 +53,15 @@ export default function Login() {
 
   return (
     <>
-     <h2 className='text-center my-4'>Login Now</h2>
+     <h2 className='text-center my-4'>Login</h2>
     {error?<div className='alert alert-danger'>incorrect email or password</div>:''}
-   
+    {load?<div className='overlay2'></div>:''}
      <form className='m-auto vh-100' onSubmit={submitLogin}>
 
-        <label htmlFor="email" className='mt-4 mb-2'> your_email:</label>
+        <label htmlFor="email" className='mt-4 mb-2'> Email:</label>
         <input onChange={getUser} type="email" className='form-control  my-1' name='email' id='email' />
        
-        <label htmlFor="password " className='mt-4 mb-2'> password:</label>
+        <label htmlFor="password " className='mt-4 mb-2'> Password:</label>
         <input onChange={getUser} type="password" className='form-control  my-1' name='password' id='password' />
 
         <div className='d-flex justify-content-between align-items-ceneter'>

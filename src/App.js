@@ -19,6 +19,8 @@ export default function App() {
     let navigate = useNavigate();
     const [userData, setUserData] = useState(null);
 
+    const [searchName, setSearchName] = useState(null);
+
     useEffect(() => {
      if(localStorage.getItem('userToken')){
         getUserData();
@@ -46,6 +48,14 @@ export default function App() {
         navigate('/login');
     }
 
+    let searchMovie=()=>
+    {
+        let search = document.querySelector(".search").value;
+        console.log(search);
+        setSearchName(search);
+        
+    }
+
     function ProtectedRoute({children})
     {
         if(!localStorage.getItem('userToken'))
@@ -60,15 +70,17 @@ export default function App() {
 
   return (
     <>
-       <Navbar logOut={logOut}/>
+       <Navbar logOut={logOut} searchMovie={searchMovie}/>
        <div className='container'>
             <Routes>
-                <Route path='/' element={<ProtectedRoute><Home/> </ProtectedRoute>} />
-                <Route path='home' element={<ProtectedRoute><Home/> </ProtectedRoute>} />
-                <Route path='movies' element={<ProtectedRoute><Movie/></ProtectedRoute>} />
-                <Route path='tvshow' element={<ProtectedRoute><TvShow/></ProtectedRoute> }/>
+                <Route path='/' element={<ProtectedRoute><Home searchName={searchName}/> </ProtectedRoute>} />
+                <Route path='Nosa_Trending' element={<ProtectedRoute><Home searchName={searchName}/> </ProtectedRoute> }/>
+                <Route path='home' element={<ProtectedRoute><Home searchName={searchName}/> </ProtectedRoute>} />
+                <Route path='movies' element={<ProtectedRoute><Movie searchName={searchName}/></ProtectedRoute>} />
+                <Route path='tvshow' element={<ProtectedRoute><TvShow searchName={searchName}/></ProtectedRoute> }/>
                 <Route path='login' element={<Login/> }/>
                 <Route path='register' element={<Register/> }/>
+                <Route path='login/register' element={<Register/> }/>
                 <Route path='*'   element={<Notfound/>}/>
 
                 <Route path='moviedetails' element ={<MovieDetails/> } >

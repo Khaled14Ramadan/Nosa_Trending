@@ -20,3 +20,38 @@ a {
   color:#fff;
   text-decoration: none;
 }
+
+.btn-tsts {
+  color: #fff;
+  background-color: #24baef;
+  border-color: #0d6efd;
+}
+.btn-tsts:focus {
+  /* color: #fff; */
+  /* background-color: #24baef;
+  border-color: #0a58ca;*/
+  box-shadow:none; 
+}
+.btn-tsts:hover {
+  color: #fff;
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  /* box-shadow: 0 0 0 0 rgb(49 132 253 / 50%); */
+}
+
+.tstsSearch{
+  z-index: 100;
+}
+
+
+/* this for register and login */
+.overlay2{
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+}
