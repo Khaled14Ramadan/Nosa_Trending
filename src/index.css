@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700;800;900&display=swap");
 
 body {
   margin: 0;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   background-color: #131722;
   color: #fff;
 }
 
 .genres div {
   background-color: #24baef;
-  width:fit-content;
+  width: fit-content;
 }
 .details span {
-  color:#949cb0;
+  color: #949cb0;
   font-weight: 300;
-  font-size:medium;
+  font-size: medium;
 }
 a {
-  color:#fff;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -30,7 +30,7 @@ a {
   /* color: #fff; */
   /* background-color: #24baef;
   border-color: #0a58ca;*/
-  box-shadow:none; 
+  box-shadow: none;
 }
 .btn-tsts:hover {
   color: #fff;
@@ -39,19 +39,19 @@ a {
   /* box-shadow: 0 0 0 0 rgb(49 132 253 / 50%); */
 }
 
-.tstsSearch{
+.tstsSearch {
   z-index: 100;
 }
 
-
 /* this for register and login */
-.overlay2{
-  background-color: rgba(0,0,0,0.5);
+.overlay2 {
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   border-radius: 10px;
   transition-duration: 0.5s;
+  z-index: 9999;
 }
