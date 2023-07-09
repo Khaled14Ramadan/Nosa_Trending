@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Nosa_Trending/static/css/main.518981c7.css",
-    "main.js": "/Nosa_Trending/static/js/main.4330106c.js",
+    "main.js": "/Nosa_Trending/static/js/main.de92777c.js",
     "static/media/fa-solid-900.ttf": "/Nosa_Trending/static/media/fa-solid-900.4a2cd718d7031b732e76.ttf",
     "static/media/fa-brands-400.ttf": "/Nosa_Trending/static/media/fa-brands-400.150de8eaa454d669c405.ttf",
     "static/media/fa-solid-900.woff2": "/Nosa_Trending/static/media/fa-solid-900.bb975c966c37455a1bc3.woff2",
@@ -12,10 +12,10 @@
     "static/media/fa-v4compatibility.woff2": "/Nosa_Trending/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
     "index.html": "/Nosa_Trending/index.html",
     "main.518981c7.css.map": "/Nosa_Trending/static/css/main.518981c7.css.map",
-    "main.4330106c.js.map": "/Nosa_Trending/static/js/main.4330106c.js.map"
+    "main.de92777c.js.map": "/Nosa_Trending/static/js/main.de92777c.js.map"
   },
   "entrypoints": [
     "static/css/main.518981c7.css",
-    "static/js/main.4330106c.js"
+    "static/js/main.de92777c.js"
   ]
 }
