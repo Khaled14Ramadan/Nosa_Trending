@@ -5,12 +5,9 @@ const SignUp = (email, password) => {
   return new Promise((success, error) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         console.log("user : ", user);
-        alert("succsefully SigUp");
         success(true);
-        // ...
       })
       .catch((e) => {
         const errorCode = e.code;

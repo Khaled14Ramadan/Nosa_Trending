@@ -6,11 +6,13 @@ import * as Yup from "yup";
 import SignIn from "../fireBase/SignIn";
 import { Link, useNavigate } from "react-router-dom";
 
+import { toast } from "react-toastify";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
-function SignInForm() {
+function SignInForm({ notify }) {
   const [load, setLoad] = useState(false);
   let navigate = useNavigate();
   const initialValues = {
@@ -27,9 +29,11 @@ function SignInForm() {
       if (response) {
         localStorage.setItem("userToken", response.accessToken);
         navigate("/Home");
+        notify("Success LogIn", "success");
       }
     } catch (e) {
       console.log(e.code);
+      notify("invalid Password Or Email", "error");
     } finally {
       setLoad(false);
     }
@@ -44,6 +48,8 @@ function SignInForm() {
     console.log("khaled test signin");
   };
 
+  // const notify = (msg) => toast(msg);
+
   return (
     <Formik
       initialValues={initialValues}
@@ -56,7 +62,7 @@ function SignInForm() {
           <>
             <h2 className="text-center my-4">Login Now</h2>
             {load ? <div className="overlay2"></div> : ""}
-            <Form layout="vertical" className="m-auto vh-100 w-50">
+            <Form layout="vertical" className="m-auto w-50">
               <Form.Item name="email" label="Email" required>
                 <Input name="email" onChange={handleChange} />
               </Form.Item>

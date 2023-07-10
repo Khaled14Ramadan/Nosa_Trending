@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Password is required"),
 });
-function SignUpForm() {
+function SignUpForm({ notify }) {
   const [load, setLoad] = useState(false);
   let navigate = useNavigate();
   const initialValues = {
@@ -32,9 +32,12 @@ function SignUpForm() {
       console.log("response :", response);
       if (response) {
         navigate("/Login");
+        notify("Success Register", "success");
       }
     } catch (e) {
-      console.log(e.code);
+      console.log(e.code.split("/")[1].replaceAll("-", " "));
+      const errorMSG = e.code.split("/")[1].replaceAll("-", " ");
+      notify(errorMSG, "error");
     } finally {
       setLoad(false);
     }
@@ -57,7 +60,7 @@ function SignUpForm() {
           <>
             <h2 className="text-center my-4">Register Now</h2>
             {load ? <div className="overlay2"></div> : ""}
-            <Form layout="vertical" className="m-auto vh-100 w-50">
+            <Form layout="vertical" className="m-auto w-50">
               <Form.Item name="name" label="Name">
                 <Input name="name" onChange={handleChange} />
               </Form.Item>
