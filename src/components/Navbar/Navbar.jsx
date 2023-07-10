@@ -80,11 +80,12 @@ export default function Navbar(props) {
                   <div className="tstsSearch ">
                     <form role="search">
                       <input
-                        onKeyUp={props.searchMovie}
                         className="search form-control me-2"
                         type="search"
                         placeholder="Search"
                         aria-label="Search"
+                        // onKeyUp={props.searchMovie}
+                        onChange={props.searchMovie}
                       />
                     </form>
                   </div>

@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
@@ -24,6 +27,55 @@ export default function App() {
 
   const [searchName, setSearchName] = useState(null);
 
+  function makeid(length) {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  // const toasterCall = useCallback(() => {
+  //   if ((toastState.message || "").length > 0) {
+  //     toast(toastState.message, {
+  //       position: "bottom-center",
+  //       autoClose: 1750,
+  //       hideProgressBar: false,
+  //       closeOnClick: false,
+  //       type: toastState.type,
+  //       draggable: true,
+  //       style: { color: "#25282b" },
+  //       progress: undefined,
+  //       pauseOnHover: false,
+  //       toastId: makeid(15),
+  //       theme: "info",
+  //       onClose: handleCloseToast,
+  //     });
+  //   }
+  // }, [toastState]);
+
+  // useEffect(() => toasterCall(), [toasterCall]);
+
+  // export declare type TypeOptions = 'info' | 'success' | 'warning' | 'error' | 'default';
+  const notify = (msg, type) =>
+    toast(msg, {
+      position: "bottom-center",
+      autoClose: 1750,
+      hideProgressBar: false,
+      closeOnClick: false,
+      type: type,
+      draggable: true,
+      style: { color: "#25282b", fontWeight: "bold" },
+      progress: undefined,
+      pauseOnHover: false,
+      // toastId: makeid(15),
+      theme: "light",
+      // onClose: handleCloseToast,
+    });
+
   useEffect(() => {
     if (localStorage.getItem("userToken")) {
       getUserData();
@@ -45,13 +97,13 @@ export default function App() {
     SignOut();
     localStorage.removeItem("userToken");
     setUserData(null);
-    console.log("helloooooo");
+    notify("Successfully logged out", "success");
     navigate("/login");
   };
 
   let searchMovie = () => {
     let search = document.querySelector(".search").value;
-    console.log(search);
+    console.log("search : ", search);
     setSearchName(search);
   };
 
@@ -65,6 +117,7 @@ export default function App() {
 
   return (
     <>
+      <ToastContainer />
       <Navbar logOut={logOut} searchMovie={searchMovie} />
       <div className="container">
         <Routes>
@@ -110,9 +163,12 @@ export default function App() {
             }
           />
           {/* <Route path='login' element={<Login/> }/> */}
-          <Route path="login" element={<SignInForm />} />
-          <Route path="register" element={<SignUpForm />} />
-          <Route path="login/register" element={<SignUpForm />} />
+          <Route path="login" element={<SignInForm notify={notify} />} />
+          <Route path="register" element={<SignUpForm notify={notify} />} />
+          <Route
+            path="login/register"
+            element={<SignUpForm notify={notify} />}
+          />
           <Route path="*" element={<Notfound />} />
 
           <Route path="moviedetails" element={<MovieDetails />}>
