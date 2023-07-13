@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { MyContext } from "../../DataCenter/MyProvider";
 
-export default function Navbar(props) {
+export default function Navbar({ logOut }) {
+  const { updateSearch, notify } = useContext(MyContext);
+
+  const search = (e) => {
+    updateSearch(e.target.value);
+  };
+  const logOuthandle = () => {
+    notify("Successfully logged out", "success");
+    logOut();
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-4">
@@ -51,7 +61,7 @@ export default function Navbar(props) {
                 </>
               ) : (
                 <li className="nav-item">
-                  <Link onClick={props.logOut} className="nav-link" to="login">
+                  <Link onClick={logOuthandle} className="nav-link" to="login">
                     Logout
                   </Link>
                 </li>
@@ -85,7 +95,7 @@ export default function Navbar(props) {
                         placeholder="Search"
                         aria-label="Search"
                         // onKeyUp={props.searchMovie}
-                        onChange={props.searchMovie}
+                        onChange={search}
                       />
                     </form>
                   </div>

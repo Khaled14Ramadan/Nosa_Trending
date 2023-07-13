@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "antd";
 import { Form, Input } from "formik-antd";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import SignUp from "../fireBase/SignUp";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "../../DataCenter/MyProvider";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string(),
@@ -14,7 +15,8 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Password is required"),
 });
-function SignUpForm({ notify }) {
+function SignUpForm() {
+  const { notify } = useContext(MyContext);
   const [load, setLoad] = useState(false);
   let navigate = useNavigate();
   const initialValues = {
