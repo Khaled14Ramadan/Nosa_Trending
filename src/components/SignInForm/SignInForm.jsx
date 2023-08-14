@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "antd";
 import { Form, Input } from "formik-antd";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import SignIn from "../fireBase/SignIn";
 import { Link, useNavigate } from "react-router-dom";
-
-import { toast } from "react-toastify";
+import { MyContext } from "../../DataCenter/MyProvider";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
-function SignInForm({ notify }) {
+function SignInForm() {
+  const { notify } = useContext(MyContext);
   const [load, setLoad] = useState(false);
   let navigate = useNavigate();
   const initialValues = {

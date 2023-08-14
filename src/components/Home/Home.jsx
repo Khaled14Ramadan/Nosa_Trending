@@ -1,14 +1,18 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import ".//Home.css";
 import { Link } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
+import { MyContext } from "../../DataCenter/MyProvider";
+import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 
-export default function Home(props) {
+export default function Home() {
   const [movies, setMovies] = useState([]);
   const [tv, setTv] = useState([]);
   const [showMOvie, setShowMOvie] = useState(false);
   const [showTV, setShowTV] = useState(false);
+  const { searchInput: searchValue } = useContext(MyContext);
 
   useEffect(() => {
     getMovies();
@@ -19,8 +23,8 @@ export default function Home(props) {
 
   useEffect(() => {
     //becouse useState is asyncrounce but it not work with promise or awiat or callback
-    //console.log(movies);
-    //console.log(tv);
+    console.log("movies : ", movies);
+    // console.log(tv);
   }, [movies, tv]);
 
   let getMovies = async () => {
@@ -69,19 +73,19 @@ export default function Home(props) {
             <p className=" py-4">Most watched movies by week</p>
           </div>
         </div>
-        {movies ? (
+        {movies.length ? (
           movies.map((movie, index) => {
             if (
               index >= 10 &&
-              (props.searchName === "" || props.searchName === null) &&
+              (searchValue === "" || searchValue === null) &&
               !showMOvie
             ) {
               return "";
             }
 
             if (
-              props.searchName == null ||
-              movie.title.toUpperCase().includes(props.searchName.toUpperCase())
+              searchValue == null ||
+              movie.title.toUpperCase().includes(searchValue.toUpperCase())
             ) {
               return (
                 <div key={index} className="col-md-2 col-sm-3 col-4">
@@ -102,31 +106,32 @@ export default function Home(props) {
                   </div>
                 </div>
               );
-            } else {
-              return "";
             }
           })
         ) : (
           <div className="col-md-8 col-sm-6 d-flex justify-content-center align-items-center">
-            {" "}
+            {/* {" "}
             <h2>
               <i className="fas fa-spinner fa-spin"></i>
-            </h2>{" "}
+            </h2>{" "} */}
+            <LoaderSpinner />
           </div>
         )}
       </div>
       {/* button to show more movies */}
-      <div className="d-flex justify-content-center">
-        {showMOvie ? (
-          <button onClick={lessShowMovie} className="btn btn-outline-info">
-            Show Less
-          </button>
-        ) : (
-          <button onClick={moreShowMovie} className="btn btn-outline-info">
-            Show More
-          </button>
-        )}
-      </div>
+      {movies.length > 10 && (
+        <div className="d-flex justify-content-center">
+          {showMOvie ? (
+            <button onClick={lessShowMovie} className="btn btn-outline-info">
+              Show Less
+            </button>
+          ) : (
+            <button onClick={moreShowMovie} className="btn btn-outline-info">
+              Show More
+            </button>
+          )}
+        </div>
+      )}
 
       {/* this to show the TV show */}
       <div className="row my-5 g-3">
@@ -140,18 +145,18 @@ export default function Home(props) {
             <p className=" py-4">Most watched Tvshow by week</p>
           </div>
         </div>
-        {tv ? (
+        {tv.length ? (
           tv.map((movie, index) => {
             if (
               index >= 10 &&
-              (props.searchName === "" || props.searchName === null) &&
+              (searchValue === "" || searchValue === null) &&
               !showTV
             ) {
               return "";
             }
             if (
-              props.searchName == null ||
-              movie.name.toUpperCase().includes(props.searchName.toUpperCase())
+              searchValue == null ||
+              movie.name.toUpperCase().includes(searchValue.toUpperCase())
             ) {
               return (
                 <div key={index} className="col-md-2 col-sm-3 col-4">
@@ -177,10 +182,7 @@ export default function Home(props) {
           })
         ) : (
           <div className="col-md-8 col-sm-6 d-flex justify-content-center align-items-center">
-            {" "}
-            <h2>
-              <i className="fas fa-spinner fa-spin"></i>
-            </h2>{" "}
+            <LoaderSpinner />
           </div>
         )}
       </div>
